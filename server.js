@@ -32,16 +32,6 @@ serve(async req => {
         showDirListing: true,
         enableCors: true,
       });
-  
-    // if (pathname === "/styles.css") {
-    //   return new Response(await Deno.readTextFile("./public/styles.css"), {
-    //     headers: { "Content-Type": "text/css; charset=utf-8" },
-    //   });
-    // }
-
-    // return new Response(await Deno.readTextFile("./public/index.html"), {
-    //     headers: { "Content-Type": "text/html; charset=utf-8" }
-    // });
 
 });
 
