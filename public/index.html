@@ -4,20 +4,25 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="bg.css">
 </head>
 
 <body>
-  <h1>しりとり</h1>
-  <p id="previousWord"></p>
-  <input id="nextWordInput" type="text" />
-  <button id="nextWordSendButton">送信</button>
+  <h1 class="head">しりとり</h1>
+  <p id="previousWord" class="word"></p>
+  <input id="nextWordInput" type="text" class="box" />
+  <button id="nextWordSendButton" class="button">送信</button>
+  <div class="bg_pattern Rhombus"></div>
+  <div class="section">
+  
 
   <script type="module">
     window.onload = async (event) => {
+
         await fetch("/shiritori", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nextWord: "りんご" })
+        body: JSON.stringify({ nextWord:"りんご"})
         });
 
         const response = await fetch("/shiritori");
