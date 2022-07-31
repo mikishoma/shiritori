@@ -9,19 +9,17 @@
 </head>
   
 <body>
-  
-
   <div id="content">
   
-
   <div id="main">
   <h1 class="head">しりとり</h1>
   <p id="previousWord" class="word"></p>
 
   <input type="text" id="nextWordInput" placeholder="回答を入力" class="box">
   <input type="button" value="送信" id="nextWordSendButton" class="button"/>
-  <button  id="resetButton">リセット</button>
-  <p id="latlng"></p>
+  <button  id="resetButton" class="button2">リセット</button>
+  <!-- <p><button id ="resetButton"  class ="button2"
+    onclick="return confirm('リセットしますか？')">リセット</button></p> -->
 
   <!-- <input id="nextWordInput" type="text" placeholder="回答を入力" class="box" />
   <button id="nextWordSendButton" class="button" onclick="clearText()">送信</button> -->
@@ -56,19 +54,9 @@
         
       //リセット
       document.querySelector("#resetButton").onclick = async (event) => {
-        document.getElementById("latlng").innerHTML = 'リセットしました';
-        // document.location.reload();
-        // var l = 1;
-        // // 生成する文字列に含める文字セット
-        // var c = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ";
-
-        // var cl = c.length;
-        // var r = "";
-        // for(var i=0; i<l; i++){
-        //   r += c[Math.floor(Math.random()*cl)];
-        // }
-
-        const nextWord =0;
+        var result = window.confirm('リセットしますか？');
+        if(result){
+        const nextWord =1;
         const response = await fetch("/shiritori", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -81,6 +69,10 @@
         para.innerText = `前の単語：${previousWord}`;
 
         document.location.reload()
+      }
+      else{
+        ;
+      }
 
       };
 

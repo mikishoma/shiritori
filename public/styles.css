@@ -1,8 +1,4 @@
 @import url('https://fonts.googleapis.com/earlyaccess/hannari.css');
-/* body {
-    background: skyblue;
-} */
-
 .head{
     position: absolute;
     left: 40%; 
@@ -40,6 +36,25 @@
 
 }
 
+.button2{
+    position: absolute;
+    top:  10%;
+    left: 10%;
+    width: 60px;        /* 横幅 */
+    height: 30px;        /* 高さ */
+    margin-left: -180px;  /* マイナス「横幅÷2」 */
+    margin-top:  -105px;  /* マイナス「高さ÷2」 */
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;/*背景色*/
+    border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+    }
+
 .button{
     position: absolute;
     top:  65%;
@@ -58,6 +73,25 @@
     box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
     font-weight: bold;
     }
+
+    .button2{
+        position: absolute;
+        top:  75%;
+        left: 60%;
+        width: 80px;        /* 横幅 */
+        height: 30px;        /* 高さ */
+        margin-left: -180px;  /* マイナス「横幅÷2」 */
+        margin-top:  -105px;  /* マイナス「高さ÷2」 */
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        color: #FFF;
+        background: #fd9535;/*背景色*/
+        border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+        border-radius: 4px;/*角の丸み*/
+        box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+        font-weight: bold;
+        }
 
     .rireki{
         font-size: 30px;

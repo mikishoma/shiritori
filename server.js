@@ -30,22 +30,19 @@ serve(async req => {
         const requestJson = await req.json();
         const nextWord = requestJson.nextWord;
         //リセットを押したら
-        if(nextWord==0){
-
-          //ランダムの文字
+        if(nextWord==1){
+        //ランダムの文字
         // 生成する文字列の長さ
         var l = 1;
         // 生成する文字列に含める文字セット
         var c = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ";
-
         var cl = c.length;
         var r = "";
         for(var i=0; i<l; i++){
           r += c[Math.floor(Math.random()*cl)];
         }
 
-        word.length = 0;
-          // c=word.length;
+          word.length = 0;
           previousWord =r;
           return new Response(previousWord);
         }
