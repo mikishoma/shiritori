@@ -4,6 +4,8 @@
 } */
 
 .head{
+    position: absolute;
+    left: 40%; 
     text-align: center;
     font-size: 60px;
     font-family: "Hannari";
@@ -11,7 +13,10 @@
 }
 
 .word{
-    text-align: center;
+    position: absolute;
+    left: 39%; 
+    top:  28%;
+    /* text-align: center; */
     font-size: 40px;
     font-family: "Hannari";
 
@@ -20,11 +25,11 @@
 .box{
     position: absolute;
     top:  65%;
-    left: 53%;
-    width: 160px;        /* 横幅 */
-    height: 30px;        /* 高さ */
-    margin-left: -180px;  /* マイナス「横幅÷2」 */
-    margin-top:  -105px;  /* マイナス「高さ÷2」 */
+    left: 53%; 
+    width: 160px;       /* 横幅*/
+     height: 30px;       /* 高さ*/ 
+     margin-left: -180px;  /*マイナス「横幅÷2」 */
+     margin-top:  -105px;  /*マイナス「高さ÷2」*/
 
 
     font-weight: bold;
@@ -53,6 +58,29 @@
     box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
     font-weight: bold;
     }
+
+    .rireki{
+        font-size: 40px;
+    }
+
+    div#content {
+        /* background-color: #99cc33; */
+        width: 100%;
+        overflow: hidden;
+        }
+    
+     div#main {
+        /* background-color: #ffffff; */
+        width: 80;
+        float: right;
+         }    
+
+         nav {
+            /* color: #339933;
+            background-color: #99cc33; */
+            width: 144px;
+            float: left;
+            }
 
 
     

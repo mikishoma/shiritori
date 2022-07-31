@@ -5,16 +5,28 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="bg.css">
+  <script src="server.js"></script>
 </head>
 
 <body>
+  
+
+  <div id="content">
+  
+
+  <div id="main">
   <h1 class="head">しりとり</h1>
   <p id="previousWord" class="word"></p>
-  <input id="nextWordInput" type="text" class="box" />
+  <input id="nextWordInput" type="text" placeholder="回答を入力" class="box" />
   <button id="nextWordSendButton" class="button">送信</button>
+  </div>
+  <nav>
+    <p id = rireki>過去の単語
+    <font size = 5><ul id="a"><li>ここに文字列を出力します。</li></ul></font>
+  </nav>
+  </div>
   <div class="bg_pattern Rhombus"></div>
-  <div class="section">
-  
+  <div class="section"></div>
 
   <script type="module">
     window.onload = async (event) => {
@@ -25,11 +37,17 @@
         body: JSON.stringify({ nextWord:"りんご"})
         });
 
+       
+
         const response = await fetch("/shiritori");
         const previousWord = await response.text();
         const para = document.querySelector("#previousWord");
         para.innerText = `前の単語：${previousWord}`;
+
+        document.getElementById('a').innerHTML = previousWord
         };
+
+         
 
         document.querySelector("#nextWordSendButton").onclick = async (event) => {
         const nextWord = document.querySelector("#nextWordInput").value;
@@ -47,7 +65,16 @@
         const previousWord = await response.text();
         const para = document.querySelector("#previousWord");
         para.innerText = `前の単語：${previousWord}`;
+
+        var todoList = document.createElement('li'); 
+        todoList.textContent = previousWord
+        document.getElementById('a').appendChild(todoList);
         };
+
+  
+
+        
+
         </script>
 </body>
 

@@ -64,12 +64,9 @@ serve(async req => {
          }
         }
         }
+    
 
-        
-
-
-        
-      word.push(nextWord);
+        word.push(nextWord);
 
         previousWord = nextWord;
         return new Response(previousWord);
