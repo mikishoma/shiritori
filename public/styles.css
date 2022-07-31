@@ -60,7 +60,9 @@
     }
 
     .rireki{
-        font-size: 40px;
+        font-size: 30px;
+        color: #ff0000;
+        left: 5%;
     }
 
     div#content {
@@ -76,11 +78,12 @@
          }    
 
          nav {
-            /* color: #339933;
-            background-color: #99cc33; */
-            width: 144px;
+            color: #800000; 
+            background-color: #00ffff;
+            width: 200px;
             float: left;
             }
+
 
 
     
