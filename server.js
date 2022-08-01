@@ -1,6 +1,8 @@
 import { serve } from "https://deno.land/std@0.138.0/http/server.ts"
 import { serveDir } from "https://deno.land/std@0.138.0/http/file_server.ts";
 
+// document.write("<script src=\"test.js\"></script> ");
+
  //ランダムの文字
  // 生成する文字列の長さ
  var l = 1;
@@ -27,6 +29,7 @@ serve(async req => {
       }
 
     if (req.method === "POST" && pathname === "/shiritori") {
+      // reload();
         const requestJson = await req.json();
         const nextWord = requestJson.nextWord;
         //リセットを押したら
@@ -81,7 +84,9 @@ serve(async req => {
          }
         }
         }
-    
+        // if(word.length >= 1){
+        //   previousWord = word.slice(-1)[0];
+        // }
         word.push(nextWord);
         previousWord = nextWord;
         return new Response(previousWord);
