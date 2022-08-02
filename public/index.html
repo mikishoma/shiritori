@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="bg.css">
-  <script src="test.js"></script>
+  <!-- <script src="sever.js"></script> -->
+  <!-- <script th:src="@{/js/server.js}"></script> -->
 </head>
   
 <body>
@@ -18,7 +19,7 @@
   <input type="text" id="nextWordInput" placeholder="回答を入力" class="box">
   <input type="button" value="送信" id="nextWordSendButton" class="button"/>
   <button  id="resetButton" class="button2">リセット</button>
-  <!-- <button onclick="reload()">ロード</button> -->
+  <button onclick="reload()">ロード</button>
 
   </div>
   <nav>
@@ -126,6 +127,8 @@
         //formクリア
         var textForm = document.getElementById("nextWordInput");
         textForm.value = '';
+
+        reset();
         };
 
         </script>

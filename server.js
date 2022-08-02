@@ -14,7 +14,7 @@ import { serveDir } from "https://deno.land/std@0.138.0/http/file_server.ts";
  for(var i=0; i<l; i++){
    r += c[Math.floor(Math.random()*cl)];
  }
- 
+
 const word = [];
 var previousWord =r;
 console.log("Listening on http://localhost:8000");
@@ -29,7 +29,6 @@ serve(async req => {
       }
 
     if (req.method === "POST" && pathname === "/shiritori") {
-      // reload();
         const requestJson = await req.json();
         const nextWord = requestJson.nextWord;
         //リセットを押したら
@@ -98,10 +97,8 @@ serve(async req => {
         showDirListing: true,
         enableCors: true,
       });
-
+     
    
 });
-
-
 
 
