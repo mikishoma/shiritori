@@ -5,8 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="bg.css">
-  <!-- <script src="sever.js"></script> -->
-  <!-- <script th:src="@{/js/server.js}"></script> -->
+  
 </head>
   
 <body>
@@ -19,7 +18,6 @@
   <input type="text" id="nextWordInput" placeholder="回答を入力" class="box">
   <input type="button" value="送信" id="nextWordSendButton" class="button"/>
   <button  id="resetButton" class="button2">リセット</button>
-  <!-- <button onclick="reload()">ロード</button> -->
 
   </div>
   <nav>
@@ -31,9 +29,9 @@
   </div>
   <div class="bg_pattern Rhombus"></div>
   <div class="section"></div>
+  
 
   <script type="module">
-
     // const word=[];
 
     window.onload = async (event) => {
@@ -48,32 +46,9 @@
         const para = document.querySelector("#previousWord");
         para.innerText = `前の単語：${previousWord}`;
 
-        // word.push(previousWord);
 
-        document.getElementById('a').innerHTML = previousWord
-
-        // //localStorageから取り出し
-        // var grstatus2 = localStorage.getItem('word');
-        // //取り出した後にJSON.parseをかけます。
-        // grstatus2 = JSON.parse(grstatus2);
-        // console.log(grstatus2);
-
-
-        // for (var i = 0; i < grstatus2.length; i++) {
-        // // // まず、idを表示する
-        // // // Htmlのdivの部分を指定する
-        // // var getData = document.getElementById('a');
-        // // // 表示したいデータを指定する
-        // // var arrayId = document.createTextNode(grstatus2[i]);
-        // // // 要素を指定し、その要素の子要素としてデータを表示する
-        // // getData.appendChild(arrayId);
-
-        // var todoList = document.createElement('li'); 
-        // todoList.textContent = grstatus2[i];
-        // document.getElementById('a').appendChild(todoList);
-        // }
+        document.getElementById('a').innerHTML = previousWor
          };
-
         
       //リセット
       document.querySelector("#resetButton").onclick = async (event) => {
@@ -87,7 +62,6 @@
         });  
 
         const previousWord = await response.text();
-        // const previousWord = "a";
         const para = document.querySelector("#previousWord");
         para.innerText = `前の単語：${previousWord}`;
 
@@ -98,7 +72,7 @@
       }
 
       };
-
+      // 送信
         document.querySelector("#nextWordSendButton").onclick = async (event) => {
 
         const nextWord = document.querySelector("#nextWordInput").value;
@@ -112,9 +86,6 @@
         alert(await response.text());
         return;
         }
-        // word.push(nextWord);
-        // //JSON.stringifyした上で、localStorageに保存します。
-        // localStorage.setItem('word', JSON.stringify(word));
 
         const previousWord = await response.text();
         const para = document.querySelector("#previousWord");
@@ -127,8 +98,6 @@
         //formクリア
         var textForm = document.getElementById("nextWordInput");
         textForm.value = '';
-
-        reset();
         };
 
         </script>

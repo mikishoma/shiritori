@@ -1,7 +1,6 @@
 import { serve } from "https://deno.land/std@0.138.0/http/server.ts"
 import { serveDir } from "https://deno.land/std@0.138.0/http/file_server.ts";
 
-// document.write("<script src=\"test.js\"></script> ");
 
  //ランダムの文字
  // 生成する文字列の長さ
@@ -83,9 +82,7 @@ serve(async req => {
          }
         }
         }
-        // if(word.length >= 1){
-        //   previousWord = word.slice(-1)[0];
-        // }
+
         word.push(nextWord);
         previousWord = nextWord;
         return new Response(previousWord);
@@ -98,7 +95,6 @@ serve(async req => {
         enableCors: true,
       });
      
-   
 });
 
 
