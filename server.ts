@@ -1,28 +1,26 @@
 import { serve } from "https://deno.land/std@0.138.0/http/server.ts"
 import { serveDir } from "https://deno.land/std@0.138.0/http/file_server.ts";
 
-
  //ランダムの文字
  // 生成する文字列の長さ
- var l = 1;
+ const l = 1;
  // 生成する文字列に含める文字セット
- var c = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ";
+ const c = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ";
 
- var cl = c.length;
- var r = "";
- for(var i=0; i<l; i++){
+ const cl = c.length;
+ let r = "";
+ for(let i=0; i<l; i++){
    r += c[Math.floor(Math.random()*cl)];
  }
 
-const word = [];
-var previousWord =r;
+const word: Array<string> = [];
+let previousWord =r;
 console.log("Listening on http://localhost:8000");
 
 serve(async req => {
     const pathname = new URL(req.url).pathname;
     console.log(pathname);
-    
-
+  
     if (req.method === "GET" && pathname === "/shiritori") {
         return new Response(previousWord);
       }
@@ -34,12 +32,12 @@ serve(async req => {
         if(nextWord==1){
         //ランダムの文字
         // 生成する文字列の長さ
-        var l = 1;
+        const l = 1;
         // 生成する文字列に含める文字セット
-        var c = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ";
-        var cl = c.length;
-        var r = "";
-        for(var i=0; i<l; i++){
+        const c = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ";
+        const cl = c.length;
+        let r = "";
+        for(let i=0; i<l; i++){
           r += c[Math.floor(Math.random()*cl)];
         }
 
@@ -55,7 +53,7 @@ serve(async req => {
         }
 
         // ひらがなチェック
-        if (nextWord.match(/^[ぁ-んー　]+$/)) {      
+        if (nextWord.match(/^[ぁ-んー　]+$/)) {
           //ひらがな
           ;
         } else {
@@ -72,7 +70,7 @@ serve(async req => {
         }
 
         else{
-        let length=word.length;
+        const length=word.length;
         for(let i=0; i<length; i++){
           if(word[i]==nextWord){
             return new Response("すでに使われた単語です。",{ status: 400 });
@@ -86,6 +84,7 @@ serve(async req => {
         word.push(nextWord);
         previousWord = nextWord;
         return new Response(previousWord);
+        // window.location.reload()
         }
 
     return serveDir(req, {
@@ -96,5 +95,3 @@ serve(async req => {
       });
      
 });
-
-

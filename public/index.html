@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="bg.css">
-  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ 
 </head>
   
 <body>
   <div id="content">
-  
   <div id="main">
   <h1 class="head">しりとり</h1>
   <p id="previousWord" class="word"></p>
-
+  
   <input type="text" id="nextWordInput" placeholder="回答を入力" class="box">
   <input type="button" value="送信" id="nextWordSendButton" class="button"/>
-  <button  id="resetButton" class="button2">リセット</button>
-
+  <button id="resetButton" class="button2">リセット</button>
   </div>
   <nav>
     <p class = "rireki">過去の単語</p>
@@ -29,11 +27,9 @@
   </div>
   <div class="bg_pattern Rhombus"></div>
   <div class="section"></div>
-  
 
   <script type="module">
-    // const word=[];
-
+    let word;
     window.onload = async (event) => {
         await fetch("/shiritori", {
         method: "POST",
@@ -46,9 +42,9 @@
         const para = document.querySelector("#previousWord");
         para.innerText = `前の単語：${previousWord}`;
 
-
-        document.getElementById('a').innerHTML = previousWor
+        document.getElementById('a').innerHTML = previousWord;
          };
+
         
       //リセット
       document.querySelector("#resetButton").onclick = async (event) => {
@@ -64,7 +60,6 @@
         const previousWord = await response.text();
         const para = document.querySelector("#previousWord");
         para.innerText = `前の単語：${previousWord}`;
-
         document.location.reload()
       }
       else{
@@ -74,7 +69,6 @@
       };
       // 送信
         document.querySelector("#nextWordSendButton").onclick = async (event) => {
-
         const nextWord = document.querySelector("#nextWordInput").value;
         const response = await fetch("/shiritori", {
         method: "POST",
@@ -86,19 +80,55 @@
         alert(await response.text());
         return;
         }
-
-        const previousWord = await response.text();
-        const para = document.querySelector("#previousWord");
-        para.innerText = `前の単語：${previousWord}`;
+        // const previousWord = await response.text();
+        // const para = document.querySelector("#previousWord");
+        // para.innerText = `前の単語：${previousWord}`;
 
         //履歴表示
-        var todoList = document.createElement('li'); 
-        todoList.textContent = previousWord
-        document.getElementById('a').appendChild(todoList);
+        // var todoList = document.createElement('li'); 
+        // todoList.textContent = previousWord
+        // document.getElementById('a').appendChild(todoList);
         //formクリア
         var textForm = document.getElementById("nextWordInput");
         textForm.value = '';
         };
+
+          async function subscribe() {
+          let response = await fetch("/shiritori");
+
+          if (response.status == 502) {
+            // 接続タイムアウトエラー
+            // 接続が長時間保留されていて、リモートサーバやプロキシがそれを閉じたときに発生する場合があります
+            // 再接続しましょう
+            await subscribe();
+          } else if (response.status != 200) {
+            // エラーを表示
+            showMessage(response.statusText);
+            // 1秒後に再接続します
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            await subscribe();
+          } else {
+            // メッセージを取得しました
+            var Words = await response.text();
+            console.log("a")
+            Words = String(Words);
+            if(word != Words){
+            const para = document.querySelector("#previousWord");
+            para.innerText = `前の単語：${Words}`;
+            // document.getElementById('a').innerHTML = previousWord;
+            var todoList = document.createElement('li'); 
+             todoList.textContent = Words;
+             document.getElementById('a').appendChild(todoList);
+             word =Words;
+             word = String(word);
+             console.log(word);
+             console.log(Words);
+            }
+            await subscribe();
+          }
+        }
+
+        subscribe();
 
         </script>
 </body>
