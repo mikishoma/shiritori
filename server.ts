@@ -84,7 +84,6 @@ serve(async req => {
         word.push(nextWord);
         previousWord = nextWord;
         return new Response(previousWord);
-        // window.location.reload()
         }
 
     return serveDir(req, {
